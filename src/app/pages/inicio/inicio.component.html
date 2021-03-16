@@ -1,0 +1,31 @@
+<app-header></app-header>
+<br />
+<form [formGroup]="myForm" novalidate>
+  <br />
+  <input type="text" formControlName="vCodigo" [(ngModel)]="clase.codigo" />
+  <app-print-error [control]="f.vCodigo" ></app-print-error>
+  <br />
+  <input type="text" formControlName="vTitulo" [(ngModel)]="clase.titulo" />
+  <app-print-error [control]="f.vTitulo" ></app-print-error>
+  <br />
+  <input type="text" formControlName="vDescripcion" [(ngModel)]="clase.descripcion" />
+  <app-print-error [control]="f.vDescripcion" ></app-print-error>
+  <br />
+
+  <button (click)="guardar()" [disabled]="myForm.invalid || !myForm.dirty" >Registrar</button>
+</form>
+<br />
+
+<table style="width:100%">
+  <tr>
+    <th>Codigo</th>
+    <th>Titulo</th>
+    <th>Descripcion</th>
+  </tr>
+  <tr *ngFor="let item of lstDtoClase">
+    <td>{{item.codigo}}</td>
+    <td>{{item.titulo}}</td>
+    <td>{{item.descripcion}}</td>
+  </tr>
+</table>
+

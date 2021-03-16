@@ -1,0 +1,30 @@
+<app-header></app-header>
+<br />
+<form [formGroup]="myForm" novalidate>
+  <br />
+  <input type="text" formControlName="vIdentificador" [(ngModel)]="estudiante.identificacionEstudiante" />
+  <app-print-error [control]="f.vIdentificador" ></app-print-error>
+  <br />
+  <input type="text" formControlName="vNombre" [(ngModel)]="estudiante.nombre" />
+  <app-print-error [control]="f.vNombre" ></app-print-error>
+  <br />
+  <input type="text" formControlName="vApellido" [(ngModel)]="estudiante.apellido" />
+  <app-print-error [control]="f.vApellido" ></app-print-error>
+  <br />
+
+  <button (click)="guardar()" [disabled]="myForm.invalid || !myForm.dirty" >Registrar</button>
+</form>
+<br />
+
+<table style="width:100%">
+  <tr>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+  </tr>
+  <tr *ngFor="let item of lstDtoEstudiante">
+    <td>{{item.identificacionEstudiante}}</td>
+    <td>{{item.nombre}}</td>
+    <td>{{item.apellido}}</td>
+  </tr>
+</table>
